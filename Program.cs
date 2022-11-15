@@ -230,7 +230,7 @@ Show2dArray(array);
 */
 ///Задача 60. Сформируйте трехмерный массив из неповторяющихся двузначных чисел. Напишите программу,которая будет построчновыводить массив, добавляя индексы каждого элемента.
 
-int[] TwoDigitPositiveNumsArray()
+int[] TwoDigitPositiveArray()
 {
     int[] array = Enumerable.Range(10, 90).ToArray();
     for (int i = 0; i < array.Length; i++)
@@ -245,15 +245,15 @@ int[] TwoDigitPositiveNumsArray()
     }
     return array;
 }
-int[,,] Create3DArray(int[] array, int height, int width, int depth)
+int[,,] Create3DArray(int[] array, int x, int y, int z)
 {
     int m = 0;
-    int[,,] array3D = new int[height, width, depth];
-    for (int i = 0; i < height; i++)
+    int[,,] array3D = new int[x, y, z];
+    for (int i = 0; i < x; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j < y; j++)
         {
-            for (int k = 0; k < depth; k++)
+            for (int k = 0; k < z; k++)
             {
                 array3D[i, j, k] = array[m];
                 m++;
@@ -262,38 +262,33 @@ int[,,] Create3DArray(int[] array, int height, int width, int depth)
     }
     return array3D;
 }
-void Print3DArray(int[,,] array)
+void Show3DArray(int[,,] array)
 {
-    Console.WriteLine("\nЭлементы с индексами (i,j,k) в трехмерном массиве: ");
+    Console.WriteLine("Ваш массив ");
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
             for (int k = 0; k < array.GetLength(2); k++)
             {
-                Console.Write(array[i, j, k] + " ");
-                Console.Write($"({i},{j},{k}) ");
+               Console.Write($" ({i},{j},{k}){array[i,j,k]}");
             }
             Console.WriteLine();
         }
         Console.WriteLine();
     }
 }
-/*
-try
-{
-    Console.Write("Введите высоту (количество строк): ");
-    int height = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Введите ширину(количество столбцов): ");
-    int width = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Введите глубину массива: ");
-    int depth = Convert.ToInt32(Console.ReadLine());
-    int[] array = TwoDigitPositiveNumsArray();
-    int[,,] array3D = Create3DArray(array, height, width, depth);
-    Print3DArray(array3D);
-}
-catch(Exception)
-{
-    Console.WriteLine("\nНедопустимый ввод!");
-    Console.WriteLine("Введите числа больше 0 и (или) уменьшите размер массива.");
-}
+
+  Console.Write("Введите x (количество строк): ");
+  int x = Convert.ToInt32(Console.ReadLine());
+  Console.Write("Введите y (количество столбцов): ");
+  int y = Convert.ToInt32(Console.ReadLine());
+  Console.Write("Введите z(глубину массива): ");
+  int z = Convert.ToInt32(Console.ReadLine());  
+
+  int[] array = TwoDigitPositiveArray();
+  int[,,] array3D = Create3DArray(array, x, y, z);
+  Show3DArray(array3D);
+
+
+  //// Последнюю задачу так и не успел доделать( (
